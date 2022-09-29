@@ -31,7 +31,7 @@ class Alter : AppCompatActivity() {
         docAlt.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    edtNome.setText("${document.data?.get("Nome")}")
+                    edtNome.hint = "${document.data?.get("Nome")}"
                     edtEndereco.setText("${document.data?.get("Endereco")}")
                     edtBairro.setText("${document.data?.get("bairro")}")
                     edtCep.setText("${document.data?.get("CEP")}")
@@ -64,6 +64,9 @@ class Alter : AppCompatActivity() {
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Cadastrado falhou :(", Toast.LENGTH_SHORT).show()
                 }
+
+            val i = Intent(this, MainActivity::class.java)
+            startActivity(i)
         }
     }
 }

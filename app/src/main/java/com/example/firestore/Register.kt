@@ -3,6 +3,7 @@ package com.example.firestore
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
+import android.content.RestrictionEntry.TYPE_NULL
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +29,8 @@ class Register : AppCompatActivity() {
         val btnSalvar : Button = findViewById(R.id.btnSalvar)
         val btnVoltar : Button = findViewById(R.id.btnVoltar)
 
+        edtNome.isEnabled = false
+
         btnVoltar.setOnClickListener {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
@@ -50,6 +53,9 @@ class Register : AppCompatActivity() {
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Cadastrado falhou :(", Toast.LENGTH_SHORT).show()
                 }
+
+            val i = Intent(this, MainActivity::class.java)
+            startActivity(i)
         }
     }
 }
